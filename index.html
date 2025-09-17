@@ -727,4 +727,318 @@
                     </div>
                     <div class="term-card">
                         <strong>Chatbot</strong>
-                
+                        <p>AI-powered conversational interfaces that can interact with users in natural language.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Cloud Computing</strong>
+                        <p>Delivering computing services over the internet, enabling access to AI capabilities without local infrastructure.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Data Lake</strong>
+                        <p>Repository storing unstructured data like social media posts, images, and videos in raw format.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Data Warehouse</strong>
+                        <p>Repository storing structured, organized data optimized for analysis and quick retrieval.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Deepfake</strong>
+                        <p>AI-generated media that replaces a person's likeness with someone else's, often used for digital replicas.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Embodiment</strong>
+                        <p>Giving AI systems physical or virtual forms to interact with the real or virtual world.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Foundation Models</strong>
+                        <p>AI models trained on broad datasets that can be applied to various downstream tasks.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>GPU (Graphics Processing Unit)</strong>
+                        <p>Specialized processors originally for graphics, now essential for AI parallel processing.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Hallucination</strong>
+                        <p>When AI systems produce outputs that seem real but are incorrect or fabricated.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Large Language Model (LLM)</strong>
+                        <p>AI models trained on massive text datasets to understand and generate human-like language.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Natural Language Processing (NLP)</strong>
+                        <p>AI's ability to understand, interpret, and generate human language in a natural way.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Prompt Engineering</strong>
+                        <p>The practice of crafting effective instructions to guide AI systems toward desired outputs.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>TPU (Tensor Processing Unit)</strong>
+                        <p>Google's specialized AI chips designed for machine learning matrix calculations.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Turing Test</strong>
+                        <p>A test of machine intelligence where a computer must be indistinguishable from a human in conversation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz" class="content-section">
+                <div class="section-header">
+                    <h1>Interactive Quiz</h1>
+                    <p>Test your understanding of AI concepts</p>
+                </div>
+
+                <div class="quiz-section">
+                    <div class="quiz-question">
+                        <h4>Question 1: What are the three core components of AI?</h4>
+                        <ul class="quiz-options">
+                            <li onclick="selectAnswer(this, false)">Hardware, Software, Network</li>
+                            <li onclick="selectAnswer(this, true)">Algorithms, Data, Computing Power</li>
+                            <li onclick="selectAnswer(this, false)">Input, Processing, Output</li>
+                            <li onclick="selectAnswer(this, false)">Memory, Storage, Processor</li>
+                        </ul>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Question 2: When was the term "Artificial Intelligence" first used?</h4>
+                        <ul class="quiz-options">
+                            <li onclick="selectAnswer(this, false)">1950 - Turing Test</li>
+                            <li onclick="selectAnswer(this, true)">1956 - Dartmouth Conference</li>
+                            <li onclick="selectAnswer(this, false)">1997 - Deep Blue victory</li>
+                            <li onclick="selectAnswer(this, false)">2011 - IBM Watson</li>
+                        </ul>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Question 3: What percentage of the world has never been connected to the internet?</h4>
+                        <ul class="quiz-options">
+                            <li onclick="selectAnswer(this, false)">25%</li>
+                            <li onclick="selectAnswer(this, false)">30%</li>
+                            <li onclick="selectAnswer(this, true)">34%</li>
+                            <li onclick="selectAnswer(this, false)">40%</li>
+                        </ul>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Question 4: What is an AI "hallucination"?</h4>
+                        <ul class="quiz-options">
+                            <li onclick="selectAnswer(this, false)">When AI becomes self-aware</li>
+                            <li onclick="selectAnswer(this, true)">When AI produces convincing but incorrect information</li>
+                            <li onclick="selectAnswer(this, false)">When AI processes visual data</li>
+                            <li onclick="selectAnswer(this, false)">When AI learns new patterns</li>
+                        </ul>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Question 5: Which AI breakthrough achieved 100 million users in just 2 months?</h4>
+                        <ul class="quiz-options">
+                            <li onclick="selectAnswer(this, false)">Google Bard</li>
+                            <li onclick="selectAnswer(this, true)">ChatGPT</li>
+                            <li onclick="selectAnswer(this, false)">IBM Watson</li>
+                            <li onclick="selectAnswer(this, false)">Microsoft Copilot</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn" onclick="checkQuizResults()">Check Results</button>
+                    <div id="quizResults" style="margin-top: 20px;"></div>
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section id="resources" class="content-section">
+                <div class="section-header">
+                    <h1>Additional Resources</h1>
+                    <p>Expand your AI knowledge with these recommended resources</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>Free Online Training</h3>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li><strong>Microsoft Learn:</strong> AI fundamentals and Azure AI services</li>
+                        <li><strong>Google AI Education:</strong> Machine learning courses and TensorFlow tutorials</li>
+                        <li><strong>IBM SkillsBuild:</strong> AI basics and practical applications</li>
+                        <li><strong>Coursera:</strong> University-level AI and ML courses</li>
+                        <li><strong>edX:</strong> MIT, Harvard, and other university AI programs</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3>Key Industry Reports</h3>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>WTTC AI in Travel & Tourism series</li>
+                        <li>EU Parliament: AI Threats & Opportunities</li>
+                        <li>OECD: G7 Hiroshima Process on Generative AI</li>
+                        <li>ITU Global Connectivity Report</li>
+                        <li>IBM Institute of Business Values AI Survey</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3>Professional Development</h3>
+                    <h4>Certification Programs</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Microsoft Azure AI Fundamentals</li>
+                        <li>Google Cloud AI/ML certifications</li>
+                        <li>IBM AI Engineering Professional Certificate</li>
+                        <li>AWS Machine Learning Specialty</li>
+                    </ul>
+                    
+                    <h4>Industry Events</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>AI Safety Summits</li>
+                        <li>Neural Information Processing Systems (NeurIPS)</li>
+                        <li>International Conference on Machine Learning (ICML)</li>
+                        <li>World Economic Forum AI sessions</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3>Recommended Reading</h3>
+                    <h4>Academic Papers</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>"Attention Is All You Need" - Google Research (2017)</li>
+                        <li>"Computing Machinery and Intelligence" - Alan Turing (1950)</li>
+                        <li>"Sparks of Artificial General Intelligence" - Microsoft Research</li>
+                    </ul>
+                    
+                    <h4>Books</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>"Artificial Intelligence: A Guide for Thinking Humans" - Melanie Mitchell</li>
+                        <li>"The Alignment Problem" - Brian Christian</li>
+                        <li>"Human Compatible" - Stuart Russell</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Stay Updated</h4>
+                    <p>AI is rapidly evolving. Follow reputable sources like MIT Technology Review, AI research labs, and industry leaders for the latest developments. Remember to verify information and be aware of AI's current limitations while exploring its potential.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        let currentSection = 'overview';
+        let quizAnswers = {};
+        let completedSections = new Set(['overview']);
+
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Update navigation
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Find and activate the corresponding nav item
+            const navLinks = document.querySelectorAll('.nav-item');
+            navLinks.forEach(link => {
+                if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(sectionId)) {
+                    link.classList.add('active');
+                }
+            });
+            
+            currentSection = sectionId;
+            completedSections.add(sectionId);
+            updateProgress();
+        }
+
+        function selectAnswer(element, isCorrect) {
+            // Remove previous selections in this question
+            const siblings = element.parentNode.querySelectorAll('li');
+            siblings.forEach(li => {
+                li.style.background = '#f8f9fa';
+                li.style.color = '#333';
+                li.style.fontWeight = 'normal';
+            });
+            
+            // Highlight selected answer
+            if (isCorrect) {
+                element.style.background = '#d4edda';
+                element.style.color = '#155724';
+                element.style.fontWeight = 'bold';
+            } else {
+                element.style.background = '#f8d7da';
+                element.style.color = '#721c24';
+                element.style.fontWeight = 'bold';
+            }
+            
+            // Store answer
+            const questionIndex = Array.from(element.closest('.quiz-section').querySelectorAll('.quiz-question')).indexOf(element.closest('.quiz-question'));
+            quizAnswers[questionIndex] = isCorrect;
+        }
+
+        function checkQuizResults() {
+            const totalQuestions = 5;
+            const correctAnswers = Object.values(quizAnswers).filter(answer => answer === true).length;
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            let feedback = '';
+            let color = '';
+            if (percentage >= 80) {
+                feedback = 'Excellent! You have a strong understanding of AI concepts.';
+                color = '#d4edda';
+            } else if (percentage >= 60) {
+                feedback = 'Good work! Review the areas you missed to strengthen your knowledge.';
+                color = '#fff3cd';
+            } else {
+                feedback = 'Keep studying! Review the course materials and try the quiz again.';
+                color = '#f8d7da';
+            }
+            
+            document.getElementById('quizResults').innerHTML = `
+                <div class="highlight-box" style="background-color: ${color};">
+                    <h4>Quiz Results</h4>
+                    <p><strong>Score: ${correctAnswers}/${totalQuestions} (${percentage}%)</strong></p>
+                    <p>${feedback}</p>
+                </div>
+            `;
+        }
+
+        function updateProgress() {
+            const totalSections = 8;
+            const completed = completedSections.size;
+            const percentage = (completed / totalSections) * 100;
+            
+            const progressBar = document.getElementById('progressBar');
+            if (progressBar) {
+                progressBar.style.width = percentage + '%';
+            }
+        }
+
+        function toggleMobileNav() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('mobile-open');
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            
+            // Add mobile menu button for smaller screens
+            if (window.innerWidth <= 768) {
+                const existingButton = document.querySelector('.mobile-menu-btn');
+                if (!existingButton) {
+                    const mobileButton = document.createElement('button');
+                    mobileButton.innerHTML = '☰ Menu';
+                    mobileButton.className = 'mobile-menu-btn';
+                    mobileButton.style.cssText = 'position: fixed; top: 20px; left: 20px; z-index: 1000; background: #4CAF50; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;';
+                    mobileButton.onclick = toggleMobileNav;
+                    document.body.appendChild(mobileButton);
+                }
+            }
+        });
+    </script>
+    </script>
+</body>
+</html>
