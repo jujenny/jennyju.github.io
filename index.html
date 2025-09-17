@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to AI - Interactive Syllabus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left Navigation */
+        .nav-sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #1a5f3f 0%, #0d4028 100%);
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-sidebar h2 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-item {
+            display: block;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-item.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .nav-subitem {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            padding: 8px 25px;
+            margin-bottom: 4px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .nav-subitem:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 30px 40px;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .section-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #4CAF50;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .content-card h3 {
+            color: #2E7D32;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .content-card h4 {
+            color: #1a5f3f;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
+            border: 1px solid #4CAF50;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .key-terms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .term-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .term-card strong {
+            color: #2E7D32;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f8f9fa 100%);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .quiz-options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quiz-options li {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .quiz-options li:hover {
+            background: #e8f5e8;
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 8px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #4CAF50, #2E7D32);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #4CAF50;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: 25px;
+            width: 16px;
+            height: 16px;
+            background: #4CAF50;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin: 10px 10px 10px 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4CAF50;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Sidebar -->
+        <nav class="nav-sidebar" id="sidebar">
+            <h2>AI Syllabus</h2>
+            
+            <a href="#overview" class="nav-item active" onclick="showSection('overview')">Course Overview</a>
+            
+            <a href="#history" class="nav-item" onclick="showSection('history')">AI History & Evolution</a>
+            <a href="#history-timeline" class="nav-subitem" onclick="showSection('history')">Timeline</a>
+            <a href="#history-breakthroughs" class="nav-subitem" onclick="showSection('history')">Key Breakthroughs</a>
+            
+            <a href="#fundamentals" class="nav-item" onclick="showSection('fundamentals')">AI Fundamentals</a>
+            <a href="#algorithms" class="nav-subitem" onclick="showSection('fundamentals')">Algorithms</a>
+            <a href="#data" class="nav-subitem" onclick="showSection('fundamentals')">Data</a>
+            <a href="#computing" class="nav-subitem" onclick="showSection('fundamentals')">Computing Power</a>
+            
+            <a href="#types" class="nav-item" onclick="showSection('types')">Types of AI</a>
+            <a href="#narrow-ai" class="nav-subitem" onclick="showSection('types')">Narrow AI</a>
+            <a href="#general-ai" class="nav-subitem" onclick="showSection('types')">General AI</a>
+            <a href="#generative-ai" class="nav-subitem" onclick="showSection('types')">Generative AI</a>
+            
+            <a href="#applications" class="nav-item" onclick="showSection('applications')">AI Applications</a>
+            <a href="#tourism" class="nav-subitem" onclick="showSection('applications')">Travel & Tourism</a>
+            <a href="#business" class="nav-subitem" onclick="showSection('applications')">Business Use Cases</a>
+            
+            <a href="#challenges" class="nav-item" onclick="showSection('challenges')">Challenges & Ethics</a>
+            <a href="#digital-divide" class="nav-subitem" onclick="showSection('challenges')">Digital Divide</a>
+            <a href="#skills-gap" class="nav-subitem" onclick="showSection('challenges')">Skills Gap</a>
+            
+            <a href="#terminology" class="nav-item" onclick="showSection('terminology')">Key Terminology</a>
+            
+            <a href="#quiz" class="nav-item" onclick="showSection('quiz')">Interactive Quiz</a>
+            
+            <a href="#resources" class="nav-item" onclick="showSection('resources')">Additional Resources</a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <div class="section-header">
+                    <h1>Introduction to Artificial Intelligence</h1>
+                    <p>A comprehensive guide to understanding AI technology and its applications in Travel & Tourism</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>Course Description</h3>
+                    <p>This course provides a foundational understanding of Artificial Intelligence technology, exploring its history, core components, types, and practical applications with a focus on the Travel & Tourism industry. Students will learn about AI algorithms, data requirements, computing infrastructure, and the ethical considerations surrounding AI implementation.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>Learning Objectives</h3>
+                    <p>By the end of this course, students will be able to:</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Understand the historical development and current state of AI technology</li>
+                        <li>Explain the three core components of AI: algorithms, data, and computing power</li>
+                        <li>Distinguish between different types of AI systems and their capabilities</li>
+                        <li>Identify practical applications of AI in Travel & Tourism and other industries</li>
+                        <li>Analyze the challenges and ethical considerations in AI implementation</li>
+                        <li>Use proper AI terminology and concepts in professional contexts</li>
+                    </ul>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">8</span>
+                        <span>Course Modules</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">12-15</span>
+                        <span>Study Hours</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">40+</span>
+                        <span>Key Terms</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span>Interactive</span>
+                    </div>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section id="history" class="content-section">
+                <div class="section-header">
+                    <h1>AI History & Evolution</h1>
+                    <p>From Alan Turing's question to modern AI breakthroughs</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>The Foundation Question</h3>
+                    <div class="highlight-box">
+                        <p><strong>1950:</strong> Alan Turing posed the fundamental question: "Can machines think?" This question laid the groundwork for AI research and introduced the famous Turing Test.</p>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>1956 - Dartmouth Conference</h4>
+                        <p>The term "Artificial Intelligence" was coined at the Dartmouth Conference, marking the official beginning of AI as a field of study.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1997 - IBM Deep Blue</h4>
+                        <p>IBM's Deep Blue supercomputer defeated world chess champion Gary Kasparov, demonstrating AI's potential to outperform humans in complex tasks.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>2011 - IBM Watson</h4>
+                        <p>IBM Watson won the game show Jeopardy, showcasing natural language processing capabilities.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>2018 - AI Art Breakthrough</h4>
+                        <p>The first AI-generated artwork "Edmond de Belamy" sold for $432,500 at Christie's auction house.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>2022 - ChatGPT Launch</h4>
+                        <p>OpenAI's ChatGPT reached 100 million users in just 2 months, bringing AI to mainstream public attention.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fundamentals Section -->
+            <section id="fundamentals" class="content-section">
+                <div class="section-header">
+                    <h1>AI Fundamentals</h1>
+                    <p>The three pillars of AI: Algorithms, Data, and Computing Power</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>The AI Trinity</h3>
+                    <div class="highlight-box">
+                        <p><strong>Algorithms</strong> tell computers what to do<br>
+                        <strong>Data</strong> tells computers what to learn<br>
+                        <strong>Computing Power</strong> gives machines the power to learn and make decisions</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3>1. Algorithms: The Brains of AI</h3>
+                    <h4>Traditional Programming vs AI</h4>
+                    <p>Traditional programming uses explicit IF-THEN-ELSE rules, while AI systems learn patterns from data without explicit programming of every step.</p>
+                    
+                    <h4>Learning Methods</h4>
+                    <div class="key-terms">
+                        <div class="term-card">
+                            <strong>Machine Learning</strong>
+                            <p>Systems that learn from data and improve performance over time with more training data.</p>
+                        </div>
+                        <div class="term-card">
+                            <strong>Deep Learning</strong>
+                            <p>Advanced ML using artificial neural networks inspired by the human brain for complex tasks.</p>
+                        </div>
+                    </div>
+
+                    <h4>Training Techniques</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li><strong>Supervised Learning:</strong> Training with correctly labeled data</li>
+                        <li><strong>Unsupervised Learning:</strong> Finding patterns in unlabeled data</li>
+                        <li><strong>Reinforcement Learning:</strong> Learning through trial and error with rewards/punishments</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3>2. Data: The Fuel That Drives AI</h3>
+                    <div class="highlight-box">
+                        <p><strong>Key Statistic:</strong> By 2025, the world may produce 175 zettabytes of data annually - equivalent to 21 laptops for every person on Earth!</p>
+                    </div>
+                    
+                    <h4>The 4 V's of Big Data</h4>
+                    <div class="key-terms">
+                        <div class="term-card">
+                            <strong>Volume</strong>
+                            <p>Massive amounts of data generated daily</p>
+                        </div>
+                        <div class="term-card">
+                            <strong>Velocity</strong>
+                            <p>Speed at which data is created and processed</p>
+                        </div>
+                        <div class="term-card">
+                            <strong>Variety</strong>
+                            <p>Different types of data (text, images, video, etc.)</p>
+                        </div>
+                        <div class="term-card">
+                            <strong>Veracity</strong>
+                            <p>Quality and accuracy of the data</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3>3. Computing Power: The Machines Behind AI</h3>
+                    <p>Modern AI requires enormous computational resources. Training sophisticated AI chatbots on hundreds of billions of words would take hundreds of years on a standard computer, but only months on advanced supercomputers.</p>
+                    
+                    <h4>Evolution of Computing</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li><strong>CPU:</strong> Traditional sequential processing</li>
+                        <li><strong>GPU:</strong> Parallel processing originally for graphics, now essential for AI</li>
+                        <li><strong>TPU:</strong> Google's specialized chips for AI matrix calculations</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Types Section -->
+            <section id="types" class="content-section">
+                <div class="section-header">
+                    <h1>Types of AI</h1>
+                    <p>Understanding different AI capabilities and functionalities</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>AI by Capability</h3>
+                    <div class="key-terms">
+                        <div class="term-card">
+                            <strong>Artificial Narrow Intelligence (ANI)</strong>
+                            <p>AI designed for specific tasks. Examples: chess computers, medical imaging AI, smart speakers.</p>
+                        </div>
+                        <div class="term-card">
+                            <strong>Artificial General Intelligence (AGI)</strong>
+                            <p>AI that can perform any intellectual task a human can. Still theoretical - not yet achieved.</p>
+                        </div>
+                        <div class="term-card">
+                            <strong>Artificial Super Intelligence (ASI)</strong>
+                            <p>AI that exceeds human intelligence in all aspects. Currently speculative.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3>AI by Functionality</h3>
+                    <h4>Expert Systems</h4>
+                    <p>AI programs that simulate human expertise in specific domains, combining knowledge bases with inference engines.</p>
+                    
+                    <h4>Predictive AI</h4>
+                    <p>Uses historical and current data to forecast future events, outcomes, or behaviors. Common in weather forecasting and business analytics.</p>
+                    
+                    <h4>Generative AI</h4>
+                    <div class="highlight-box">
+                        <p>The newest and most publicized form of AI that can create new content including text, images, video, and audio based on user prompts. Powered by Large Language Models (LLMs) and foundation models.</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3>Generative AI Deep Dive</h3>
+                    <p>Generative AI burst onto the global scene with ChatGPT in late 2022, achieving 100 million users in just 2 months.</p>
+                    
+                    <h4>Key Features:</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Natural language processing and conversation</li>
+                        <li>Content creation across multiple formats</li>
+                        <li>Contextual understanding and memory</li>
+                        <li>Creative problem-solving capabilities</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Important Limitation:</strong> AI "hallucinations" - systems may produce convincing but incorrect information. Always verify critical outputs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Applications Section -->
+            <section id="applications" class="content-section">
+                <div class="section-header">
+                    <h1>AI Applications</h1>
+                    <p>Real-world implementations across industries</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>Travel & Tourism Applications</h3>
+                    <h4>Expert Systems in Tourism</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Personalized travel planning and recommendations</li>
+                        <li>Intelligent booking systems</li>
+                        <li>24/7 customer service chatbots</li>
+                        <li>Dynamic pricing optimization</li>
+                    </ul>
+                    
+                    <h4>Predictive AI for Travel</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Flight delay predictions</li>
+                        <li>Demand forecasting for hotels and airlines</li>
+                        <li>Weather impact analysis</li>
+                        <li>Customer behavior prediction</li>
+                    </ul>
+                    
+                    <h4>Generative AI Applications</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Automated content creation for marketing</li>
+                        <li>Personalized travel itineraries</li>
+                        <li>Multi-language customer support</li>
+                        <li>Social media content generation</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3>Healthcare AI Breakthroughs</h3>
+                    <div class="highlight-box">
+                        <p><strong>Case Study:</strong> Swedish AI study found that AI-supported breast cancer screening was as effective as two radiologists working together, reduced workload by 50%, and detected 20% more cancers early.</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3>Creative Industries</h3>
+                    <p>AI has revolutionized creative fields:</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li><strong>Visual Arts:</strong> AI-generated paintings and photography</li>
+                        <li><strong>Music:</strong> AI composition and voice synthesis</li>
+                        <li><strong>Film:</strong> Digital effects and potential script writing</li>
+                        <li><strong>Writing:</strong> Content creation and editing assistance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Challenges Section -->
+            <section id="challenges" class="content-section">
+                <div class="section-header">
+                    <h1>Challenges & Ethics</h1>
+                    <p>Addressing the digital divide and ethical considerations</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>The Global Digital Divide</h3>
+                    <div class="highlight-box">
+                        <p><strong>Critical Statistic:</strong> 34% of the world (2.6 billion people) has never been connected to the internet, representing a significant AI access gap.</p>
+                    </div>
+                    
+                    <h4>Regional Disparities</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>In low-income economies, mobile broadband costs 9% of income (6x global average)</li>
+                        <li>64% of people in least developed countries are not online</li>
+                        <li>Youth connectivity leads at 75% vs 65% for general population</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3>AI Skills Gap</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">13%</span>
+                            <span>Workers offered AI training in 2023</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">20x</span>
+                            <span>Increase in job postings requiring AI skills</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">40%</span>
+                            <span>Workforce needing reskilling for AI</span>
+                        </div>
+                    </div>
+                    
+                    <h4>Training Solutions</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Free online courses from Microsoft, Google, IBM</li>
+                        <li>University partnerships and certifications</li>
+                        <li>Peer-to-peer learning programs</li>
+                        <li>Government-sponsored digital education initiatives</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3>Ethical Considerations</h3>
+                    <h4>Key Challenges</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li><strong>Disinformation:</strong> AI-generated fake images and content</li>
+                        <li><strong>Job Displacement:</strong> Automation impact on employment</li>
+                        <li><strong>Privacy:</strong> Data collection and usage concerns</li>
+                        <li><strong>Bias:</strong> AI systems reflecting training data biases</li>
+                        <li><strong>Explainability:</strong> Understanding AI decision-making processes</li>
+                    </ul>
+                    
+                    <h4>Regulatory Responses</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>EU AI Act for comprehensive regulation</li>
+                        <li>UK AI Safety Summit (2023)</li>
+                        <li>G7 international collaboration frameworks</li>
+                        <li>Industry self-regulation initiatives</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Terminology Section -->
+            <section id="terminology" class="content-section">
+                <div class="section-header">
+                    <h1>Key Terminology</h1>
+                    <p>Essential AI vocabulary for business leaders</p>
+                </div>
+
+                <div class="key-terms">
+                    <div class="term-card">
+                        <strong>Algorithm</strong>
+                        <p>A set of rules or instructions that tell a computer how to perform a task or solve a problem.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Artificial Neural Network (ANN)</strong>
+                        <p>Computing systems inspired by biological neural networks that can learn and make decisions.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Big Data</strong>
+                        <p>Extremely large datasets characterized by volume, velocity, variety, and veracity.</p>
+                    </div>
+                    <div class="term-card">
+                        <strong>Chatbot</strong>
+                
